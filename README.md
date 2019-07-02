@@ -1,6 +1,6 @@
-#Shiro安全框架
-##什么是Shiro
-###什么是Shiro
+# Shiro安全框架
+## 什么是Shiro
+### 什么是Shiro
 ```
 Apache Shiro是一个强大且易用的Java安全框架,执行身份验证、授权、密码和会话管理。使用Shiro的易于理解的
 API,您可以快速、轻松地获得任何应用程序,从最小的移动应用程序到最大的网络和企业应用程序。
@@ -17,8 +17,8 @@ Apache Shiro 的首要目标是易于使用和理解。安全有时候是很复�
 启用单点登录（SSO）功能。
 为没有关联到登录的用户启用"Remember Me"服务
 ```
-###与Spring Security的对比
-####Shiro：
+### 与Spring Security的对比
+#### Shiro：
 ```
 Shiro较之 Spring Security，Shiro在保持强大功能的同时，还在简单性和灵活性方面拥有巨大优势。
 1. 易于理解的 Java Security API；
@@ -30,14 +30,14 @@ Shiro较之 Spring Security，Shiro在保持强大功能的同时，还在简单
 7. 非常简单的加密 API；
 8. 不跟任何的框架或者容器捆绑，可以独立运行
 ```
-####Spring Security：
+#### Spring Security：
 ```
 除了不能脱离Spring，shiro的功能它都有。而且Spring Security对Oauth、OpenID也有支持,Shiro则需要自己手
 动实现。Spring Security的权限细粒度更高。
 ```
 ### Shiro的功能模块
 
-####Shiro可以非常容易的开发出足够好的应用，其不仅可以用在JavaSE环境，也可以用在JavaEE环境。Shiro可以帮助我们完成：认证、授权、加密、会话管理、与Web集成、缓存等。这不就是我们想要的嘛，而且Shiro的API也是非常简单；其基本功能点如下图所示：
+#### Shiro可以非常容易的开发出足够好的应用，其不仅可以用在JavaSE环境，也可以用在JavaEE环境。Shiro可以帮助我们完成：认证、授权、加密、会话管理、与Web集成、缓存等。这不就是我们想要的嘛，而且Shiro的API也是非常简单；其基本功能点如下图所示：
 ```
 Authentication：身份认证/登录，验证用户是不是拥有相应的身份。
 Authorization：授权，即权限验证，验证某个已认证的用户是否拥有某个权限；即判断用户是否能做事情。
@@ -50,7 +50,7 @@ Testing：测试支持的存在来帮助你编写单元测试和集成测试，�
 "Run As"：一个允许用户假设为另一个用户身份（如果允许）的功能，有时候在管理脚本很有用。
 "Remember Me"：记住我。
 ```
-##Shiro的内部结构
+## Shiro的内部结构
 ```
 Subject：主体，可以看到主体可以是任何可以与应用交互的“用户”；
 SecurityManager：相当于SpringMVC中的DispatcherServlet或者Struts2中的FilterDispatcher；是Shiro的心脏；所有具体的交互都通过SecurityManager进行控制；它管理着所有Subject、且负责进行认证和授权、及会话、缓存的管理。
@@ -63,14 +63,14 @@ Memcached SessionDAO；另外SessionDAO中可以使用Cache进行缓存，以提
 CacheManager：缓存控制器，来管理如用户、角色、权限等的缓存的；因为这些数据基本上很少去改变，放到缓存中后可以提高访问的性能
 Cryptography：密码模块，Shiro提高了一些常见的加密组件用于如密码加密/解密的。
 ```
-##应用程序使用Shiro
-####也就是说对于我们而言，最简单的一个Shiro应用：
+## 应用程序使用Shiro
+#### 也就是说对于我们而言，最简单的一个Shiro应用：
 ```
 1、应用代码通过Subject来进行认证和授权，而Subject又委托给SecurityManager；
 2、我们需要给Shiro的SecurityManager注入Realm，从而让SecurityManager能得到合法的用户及其权限进行判断。
 从以上也可以看出，Shiro不提供维护用户/权限，而是通过Realm让开发人员自己注入。
 ```
-##Shiro的入门
+## Shiro的入门
 ```
 （1）创建工程导入shiro坐标
 <dependencies>
@@ -88,8 +88,8 @@ Cryptography：密码模块，Shiro提高了一些常见的加密组件用于如
 </dependencies>
 
 ```
-###用户认证
-####认证：身份认证/登录，验证用户是不是拥有相应的身份。基于shiro的认证，是通过subject的login方法完成用户认证工作的
+### 用户认证
+#### 认证：身份认证/登录，验证用户是不是拥有相应的身份。基于shiro的认证，是通过subject的login方法完成用户认证工作的
 ```
 （1）在resource目录下创建shiro的ini配置文件构造模拟数据（shiro-auth.ini）
 [users]
@@ -124,8 +124,8 @@ public void testLogin() throws Exception{
     System.out.println(subject.getPrincipal());
 }
 ```
-###用户授权
-####授权，即权限验证，验证某个已认证的用户是否拥有某个权限；即判断用户是否能做事情，常见的如：验证某个用户是否拥有某个角色。或者细粒度的验证某个用户对某个资源是否具有某个权限
+### 用户授权
+#### 授权，即权限验证，验证某个已认证的用户是否拥有某个权限；即判断用户是否能做事情，常见的如：验证某个用户是否拥有某个角色。或者细粒度的验证某个用户对某个资源是否具有某个权限
 ```
 （1）在resource目录下创建shiro的ini配置文件构造模拟数据（shiro-prem.ini）
 [users]
@@ -166,8 +166,8 @@ public void testLogin() throws Exception{
 }
 
 ```
-###自定义Realm
-####Realm域：Shiro从Realm获取安全数据（如用户、角色、权限），就是说SecurityManager要验证用户身份，那么它需要从Realm获取相应的用户进行比较以确定用户身份是否合法；也需要从Realm得到用户相应的角色/权限进行验证用户是否能进行操作；可以把Realm看成DataSource，即安全数据源
+### 自定义Realm
+#### Realm域：Shiro从Realm获取安全数据（如用户、角色、权限），就是说SecurityManager要验证用户身份，那么它需要从Realm获取相应的用户进行比较以确定用户身份是否合法；也需要从Realm得到用户相应的角色/权限进行验证用户是否能进行操作；可以把Realm看成DataSource，即安全数据源
 ```
 （1）自定义Realm
 /**
@@ -233,7 +233,7 @@ public class PermissionRealm extends AuthorizingRealm {
    }
 }
 ```
-###配置shiro的ini配置文件（shiro-realm.ini）
+### 配置shiro的ini配置文件（shiro-realm.ini）
 ```
 
 [main]
@@ -271,8 +271,8 @@ public class ShiroTest2 {
     }
 }
 ```
-###认证与授权的执行流程分析
-####认证流程
+### 认证与授权的执行流程分析
+#### 认证流程
 ```
 1. 首先调用Subject.login(token)进行登录，其会自动委托给Security Manager，调用之前必须通过
 SecurityUtils. setSecurityManager()设置；
@@ -283,7 +283,7 @@ ModularRealmAuthenticator会调用AuthenticationStrategy进行多Realm身份验�
 5. Authenticator会把相应的token传入Realm，从Realm获取身份验证信息，如果没有返回/抛出异常表示身份
 验证失败了。此处可以配置多个Realm，将按照相应的顺序及策略进行访问。
 ```
-####授权流程
+#### 授权流程
 ```
 1. 首先调用Subject.isPermitted/hasRole接口，其会委托给SecurityManager，而SecurityManager接着会委托给Authorizer；
 2. Authorizer是真正的授权者，如果我们调用如isPermitted(“user:view”)，其首先会通过PermissionResolver把字符串转换成相应的Permission实例；
